@@ -14,10 +14,10 @@ jobs:
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
-        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
+        if: contains(matrix.pkg, 'gtk') && !contains(matrix.target, 'static') || !contains(matrix.pkg, 'gtk')
 
       - name: Run a multi-line script
-        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
+        if: contains(matrix.pkg, 'gtk') && !contains(matrix.target, 'static') || !contains(matrix.pkg, 'gtk')
         run: |
           cd \
           dir
@@ -26,7 +26,7 @@ jobs:
           bootstrap-vcpkg.bat
           vcpkg install ${{ matrix.pkg }} --triplet=${{ matrix.target }}
       - name: Artifact
-        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
+        if: contains(matrix.pkg, 'gtk') && !contains(matrix.target, 'static') || !contains(matrix.pkg, 'gtk')
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.target }}-${{ matrix.pkg }}
