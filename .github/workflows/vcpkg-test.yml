@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: contains(matrix.pkg, "gtk") == true && contains(matrix.target, "static") != true
+    if: ${{ ( contains(matrix.pkg, 'gtk') && !contains(matrix.target, 'static') ) || !contains(matrix.pkg, 'gtk') }}
     strategy:
       matrix:
         pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
