@@ -11,8 +11,9 @@ jobs:
       matrix:
         pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
         target: ["x86-windows","x86-windows-static","x64-windows","x64-windows-static"]
-    runs-on: windows-latest
-    if: contains(matrix.pkg, "gtk") && contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
+        os: ["windows-latest"]
+    runs-on: ${{ matrix.os }}
+    if: contains("${{ matrix.pkg }}", "gtk") && contains("${{ matrix.target }}", "static") || !contains("${{ matrix.pkg }}", "gtk")
     steps:
       - uses: actions/checkout@v3
 
