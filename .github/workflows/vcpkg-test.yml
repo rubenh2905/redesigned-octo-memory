@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
-        target: ["x86-windows","x86-windows-static","x64-windows","x64-windows-static"]
+        target: ["x64-windows","x64-windows-static"]
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
