@@ -7,6 +7,10 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
+        target: ["x86-windows","x86-windows-static","x64-windows","x64-windows-static"]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,10 +22,10 @@ jobs:
           git clone https://github.com/microsoft/vcpkg
           cd vcpkg
           bootstrap-vcpkg.bat
-          vcpkg install ffmpeg --triplet=x64-windows
+          vcpkg install ${{ matrix.pkg }} --triplet=${{ matrix.target }}
       - name: Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: artifact-windows-latest
+          name: ${{ matrix.target }}-${{ matrix.pkg }}
           path: |
             \vcpkg\installed\
