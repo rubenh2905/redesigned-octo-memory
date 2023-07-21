@@ -11,13 +11,13 @@ jobs:
       matrix:
         pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
         target: ["x86-windows","x86-windows-static","x64-windows","x64-windows-static"]
-        os: ["windows-latest"]
-    runs-on: ${{ matrix.os }}
-    if: contains(matrix.pkg, "ffmpeg") 
+    runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
+        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
 
       - name: Run a multi-line script
+        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
         run: |
           cd \
           dir
@@ -26,6 +26,7 @@ jobs:
           bootstrap-vcpkg.bat
           vcpkg install ${{ matrix.pkg }} --triplet=${{ matrix.target }}
       - name: Artifact
+        if: contains(matrix.pkg, "gtk") && !contains(matrix.target, "static") || !contains(matrix.pkg, "gtk")
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.target }}-${{ matrix.pkg }}
