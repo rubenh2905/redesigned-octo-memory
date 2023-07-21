@@ -18,10 +18,10 @@ jobs:
           git clone https://github.com/microsoft/vcpkg
           cd vcpkg
           bootstrap-vcpkg.bat
-          vcpkg install gtkmm --triplet=x64-windows
+          vcpkg install ffmpeg --triplet=x64-windows
       - name: Artifact
         uses: actions/upload-artifact@v3
         with:
           name: artifact-windows-latest
           path: |
-            ./installed/
+            \vcpkg\installed\
