@@ -7,9 +7,10 @@ on:
 
 jobs:
   build:
+    if: contains(matrix.pkg, "gtk") == true && contains(matrix.target, "static") != true
     strategy:
       matrix:
-        pkg: ["gtk3","gtk","ffmpeg","ffmpeg[all]"]
+        pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
         target: ["x86-windows","x86-windows-static","x64-windows","x64-windows-static"]
     runs-on: windows-latest
     steps:
