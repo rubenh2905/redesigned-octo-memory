@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: ! contains(matrix.pkg, 'gtk')
+    if: contains(matrix.pkg, 'ffmpeg')
     strategy:
       matrix:
         pkg: ["gtk3","gtk","gtkmm","ffmpeg","ffmpeg[all]"]
