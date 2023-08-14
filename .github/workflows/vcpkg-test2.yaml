@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         pkg: ["tensorflow"]
-        target: ["x64-windows","x64-windows-static"]
+        target: ["x64-windows"]
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
