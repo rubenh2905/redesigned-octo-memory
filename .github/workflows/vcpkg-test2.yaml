@@ -1,4 +1,4 @@
-name: vcpkg-test
+name: vcpkg-test2
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         pkg: ["tensorflow"]
-        target: ["x64-windows"]
+        target: ["x86-windows"]
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
