@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        pkg: ["ffmpeg[all-gpl]"]
+        pkg: ["boost"]
         target: ["x64-windows"]
     runs-on: "windows-latest"
     steps:
