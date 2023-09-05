@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        pkg: ["tensorflow"]
+        pkg: ["ffmpeg[all-gpl]"]
         target: ["x64-windows"]
     runs-on: "windows-latest"
     steps:
